@@ -1,25 +1,9 @@
 package db
 
-type ErrCode uint32
+import "errors"
 
-const (
-	ErrInternal ErrCode = iota
-	ErrNotFound
-	ErrAlreadyExists
+var (
+	ErrInternal      = errors.New("internal error")
+	ErrNotFound      = errors.New("record not found")
+	ErrAlreadyExists = errors.New("record already exists")
 )
-
-type Error struct {
-	Code    ErrCode
-	Message string
-}
-
-func (s Error) Error() string {
-	return s.Message
-}
-
-func NewError(code ErrCode, message string) Error {
-	return Error{
-		Code:    code,
-		Message: message,
-	}
-}
