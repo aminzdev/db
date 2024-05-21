@@ -15,7 +15,7 @@ type Postgres struct {
 	Pass     string `validate:"required"`
 	DBName   string `validate:"required" mapstructure:"db-name"`
 	SSL      string `validate:"required,oneof=disable allow prefer require verify-ca verify-full"`
-	TimeZone string `validate:"omitempty,timezone" mapstructure:"time-zone"`
+	TimeZone string `validate:"omitempty" mapstructure:"time-zone"`
 }
 
 func (p *Postgres) Connect() (*DB, error) {
